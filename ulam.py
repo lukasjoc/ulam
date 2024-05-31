@@ -136,7 +136,8 @@ def tokenize(source, window_size=7):
     return windows
 
 def print_spiral_c(source, sp, row_size):
-    toks = tokenize("./smol2.c", window_size=7)
+    window_size=7
+    toks = tokenize("./smol2.c", window_size=window_size)
     # print(toks[len(toks)-10:])
     i = 0
     pc = 0
@@ -146,13 +147,13 @@ def print_spiral_c(source, sp, row_size):
         if p:
             pc += 1
             if i+1 > len(toks):
-                print(" " * 7, end=" ")
+                print(" "*window_size, end=" ")
             else:
                 tok = toks[i]
                 print(toks[i], end=" ")
                 i += 1
         else:
-            print(" " * 7, end=" ")
+            print(" "*window_size, end=" ")
     # print(len(toks), pc)
     print()
 

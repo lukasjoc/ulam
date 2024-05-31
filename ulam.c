@@ -1,37 +1,39 @@
-                                                                n=19;sp                         [361];N         =361;p=                         180;v=1
 
-        ;d=1;i=                                         0;main(                                                                         ){sp[p]
 
-                =v;while                         (v<N){if         (p+1>=N
+                                                                n=19;sp                         [361];N         =361;p=                         180;v=1 
 
-                                                                        )break;         if(sp[p                                         +1]!=0)
+        ;d=1;i=                                         0;main(                                                                         ){sp[p]         
 
-                d++;for         (i=0;i<                         d;i++)sp                                                         [++p]=++
+                =v;while                         (v<N){if         (p+1>=N                                                                                 
 
-                                                                        v;if(sp         [p-n]!=                         0)d++;if
+                                                                        )break;         if(sp[p                                         +1]!=0)         
 
-(p+1>=N                         )break;         if(sp[p                                         -n]!=0)         sp[++p]         =++v;for
+                d++;for         (i=0;i<                         d;i++)sp                                                         [++p]=++                 
 
-        (i=0;i<         d;i++){         p-=n;sp         [p]=++v                         ;}if(sp
+                                                                        v;if(sp         [p-n]!=                         0)d++;if                         
 
-                                                                [p-1]!=         0)d++;if         (p-1>=N
+(p+1>=N                         )break;         if(sp[p                                         -n]!=0)         sp[++p]         =++v;for                 
 
-                        )break;                         for(i=0                 ;i<d;i++ )sp[--p         ]=++v;if         (sp[p+n         ]!=0)d++
+        (i=0;i<         d;i++){         p-=n;sp         [p]=++v                         ;}if(sp                                                         
 
-                                ;if(p+n         >=N)break         ;if(sp[
+                                                                [p-1]!=         0)d++;if         (p-1>=N                                                 
 
-                                        p+n]!=0                         )sp[--p
+                        )break;                         for(i=0                 ;i<d;i++ )sp[--p         ]=++v;if         (sp[p+n         ]!=0)d++         
 
-]=++v;for                         (i=0;i<         d;i++){                         p+=n;sp                         [p]=++v         ;}}for(
+                                ;if(p+n         >=N)break         ;if(sp[                                                                                 
 
-        i=0;i<N                         ;i++){int                                         P=1;int                                         N=sp[i
+                                        p+n]!=0                         )sp[--p                                                                         
 
-                                                ];if(N>                                                                                         1){for(
+]=++v;for                         (i=0;i<         d;i++){                         p+=n;sp                         [p]=++v         ;}}for(                 
 
-        int i=2         ;i<=N/2                                         ;i++){if                         (N%i==0                         ){P=0;break
+        i=0;i<N                         ;i++){int                                         P=1;int                                         N=sp[i         
 
-                ;}else{                                                                                         P=1;}}}
+                                                ];if(N>                                                                                         1){for( 
 
-                                        printf(                         i%n==0?         "\n":""
+        int i=2         ;i<=N/2                                         ;i++){if                         (N%i==0                         ){P=0;break         
 
-                                "%-2s",         P==1?"."                         :"");}puts                                         ("");}
+                ;}else{                                                                                         P=1;}}}                                 
+
+                                        printf(                         i%n==0?         "\n":""                                                         
+
+                                "%-2s",         P==1?"."                         :"");}puts                                         ("");}                 
