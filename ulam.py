@@ -76,7 +76,13 @@ def create_spiral(row_size):
             data, pos, row_size, val, dist)
     return data
 
-def prime(n): return n>1 and all(n%i for i in range(2, int(n**.5)+1))
+def prime(n):
+    if n <= 1: return False
+    for i in range(2, (n//2)+1):
+        if n%i==0: return False
+    return True
+    # return n>1 and all(n%i for i in range(2, int(n**.5)+1))
+
 def print_spiral(sp, row_size):
     for pos in range(len(sp)):
         if (pos % row_size) == 0:
@@ -102,9 +108,58 @@ def print_spiral_box(sp, row_size):
     print()
 
 
+def tokenize(source, window_size=7):
+    import clang.cindex as clang
+    COMMENT = clang.TokenKind.COMMENT
+    IDENT = clang.TokenKind.IDENTIFIER
+    KEYWORD = clang.TokenKind.KEYWORD
+    clang.Config.set_library_file("/usr/lib/llvm-14/lib/libclang.so.1")
+    index = clang.Index.create()
+    unit = index.parse(source)
+    toks = [tok
+            for tok in unit.get_tokens(extent=unit.cursor.extent)
+            if tok.kind != COMMENT]
+    windows = []
+    window = ""
+    i = 0
+    while i < len(toks):
+        if toks[i].kind == IDENT and toks[i-1].kind == KEYWORD:
+            window += " "
+        window += toks[i].spelling
+        if len(window) >= window_size:
+            windows.append(window.strip())
+            window = ""
+        i += 1
+    if len(window) != 0:
+        windows.append(window.strip())
+        window = ""
+    return windows
+
+def print_spiral_c(source, sp, row_size):
+    toks = tokenize("./smol2.c")
+    # print(toks[len(toks)-10:])
+    i = 0
+    pc = 0
+    for pos in range(len(sp)):
+        if (pos % row_size) == 0: print()
+        p = prime(sp[pos])
+        if p:
+            pc += 1
+            if i+1 > len(toks):
+                print("/**/" * 5, end=" ")
+            else:
+                tok = toks[i]
+                print(toks[i], end=" ")
+                i += 1
+        else:
+            print(" "*3, end=" ")
+    # print(len(toks), pc)
+    print()
+
 if __name__ == "__main__":
     import sys
     sp_size = int(sys.argv[1])
     sp = create_spiral(sp_size)
-    print_spiral(sp, sp_size)
-    print_spiral_box(sp, sp_size)
+    # print_spiral(sp, sp_size)
+    # print_spiral_box(sp, sp_size)
+    print_spiral_c("./smol2.c", sp, sp_size)
